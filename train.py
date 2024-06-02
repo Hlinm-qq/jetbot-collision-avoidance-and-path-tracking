@@ -26,7 +26,7 @@ SAVEDIR = DATASETDIR + "/left"
 
 blocked_left = 0
 blocked_right = 0
-model_path = "./checkpoints/checkpoint_epoch4.pth"
+model_path = "./unet/checkpoints/checkpoint_epoch4.pth"
 recent_distances = []  # List to store recent distance measurements
 MAX_HISTORY = 4
 
@@ -53,18 +53,18 @@ def step(img, action, dist=-1):
     elif action == 4:
         robot.reset()
     elif action == 99:
-        Kp = 0.001
+        Kp = 0.0005
 
-        if dist < -50:
-            if dist < -100:
-                blocked_left += 8
+        if dist < -10:
+            # if dist < -100:
+            #     blocked_left += 8
             # robot.set_motor(0.2, 0.2 - (blocked_right/100 + dist/1000))
             robot.right(Kp * abs(dist))
-        elif dist > 50:
+        elif dist > 10:
             # if dist > 100:
             # dist /= 10
-            if dist > 100:
-                blocked_right += 8
+            # if dist > 100:
+            #     blocked_right += 8
             # robot.set_motor(0.2 - 0.2*(blocked_right/100 + dist/1000), 0.2)
             robot.left(Kp * abs(dist))
         else:
@@ -165,9 +165,9 @@ def get_range(image_bgr, path):
     right2 = np.max(coord2, axis=0)
     # print(coord.shape)
     # print(coord[:5, :])
-    line_mean1 = 320
+    line_mean1 = 64
     line_mean1 = int(np.mean([left1[0][0], right1[0][0]]))
-    line_mean2 = 320
+    line_mean2 = 64
     line_mean2 = int(np.mean([left2[0][0], right2[0][0]]))
 
     line_mean3 = int(np.mean([line_mean1, line_mean2]))
@@ -232,10 +232,11 @@ def cleanup_before_exit(signum, frame):
 
 
 if __name__ == "__main__":
-    imgPath = "./imgs/test_img_3175.png"
+    # imgPath = "./imgs/test_img_3175.png"
+    # imgPath = "./dataset/left/test_img_71/img.png"
 
-    img = cv2.imread(imgPath)
-    img2 = Image.open(imgPath)
+    # img = cv2.imread(imgPath)
+    # img2 = Image.open(imgPath)
 
     # get_range(None, imgPath)
 
