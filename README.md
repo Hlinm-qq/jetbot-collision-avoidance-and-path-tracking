@@ -1,5 +1,8 @@
 # jetbot-collision-avoidance-and-path-tracking
 
-in development...
+Link: https://reurl.cc/LWWgzX(for windows)
 
-- change the content of "train.py" file in python-wrapper dir with "train copy.py"
+running:
+* Run Server: Dataserver.exe
+* Run the Unity3D Simulator 
+* Run Python Client: train copy.py
