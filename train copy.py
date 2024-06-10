@@ -140,8 +140,8 @@ def get_range(oriImg, path):
 
     line_mean3 = int(np.mean([line_mean1, line_mean2]))
     
-    print(left1, right1)
-    print(left2, right2)
+    # print(left1, right1)
+    # print(left2, right2)
     dist = 320 - line_mean3
 
     if(path != ""):
@@ -208,10 +208,11 @@ def cleanup_before_exit(signum, frame):
     sys.exit(0)
 
 if __name__ == "__main__":
-    imgPath = "./imgs/test_img_1200.png"
+    # # imgPath = "./imgs/test_img_1200.png"
+    # imgPath = "./dataset/left/test_img_71/img.png"
 
-    img = cv2.imread(imgPath)
-    img2 = Image.open(imgPath)
+    # img = cv2.imread(imgPath)
+    # img2 = Image.open(imgPath)
 
     # get_range(None, imgPath)
 
@@ -224,10 +225,10 @@ if __name__ == "__main__":
     # key_listener_thread.daemon = True
     # key_listener_thread.start()
 
-    listener = keyboard.Listener(
-                                on_press=on_press, 
-                                on_release=on_release)
-    listener.start()
+    # listener = keyboard.Listener(
+    #                             on_press=on_press, 
+    #                             on_release=on_release)
+    # listener.start()
 
     # while True:
     #     None
